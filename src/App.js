@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from "react";
+import NavBar from "./NavBar";
+import Form from "./Form";
+import PageContent from './PageContent';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { LanguageProvider } from './contexts/LanguageContext';
+class App extends Component {
+  render() {
+    return (
+      <ThemeProvider>
+        <LanguageProvider>
+          <PageContent>
+              <NavBar />
+              <Form />
+          </PageContent>
+        </LanguageProvider>
+      </ThemeProvider>
+    );
+  }
 }
 
 export default App;
+
+/*
+To consume context in components there are 2 ways
+1) for classbased in the end
+MyClass.contextType = MyContext;
+or
+before render method
+static contextType = MyContext;
+
+
+*/
